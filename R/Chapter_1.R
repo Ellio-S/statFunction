@@ -6,7 +6,7 @@
 #n is the sample size
 #Takes data set as parameter
 #Returns the variance
-
+#' @export
 variance <- function(data)
 {
   val <- mean(data^2) - (mean(data)^2)
