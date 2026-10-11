@@ -2,7 +2,8 @@
 
 
 #' Standard deviation
-#' @description Notation: sigma - population standard deviation
+#' @description 
+#' Notation: sigma - population standard deviation
 #' @param data dataset
 #' @return The stadard deviation
 #' @export
