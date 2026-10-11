@@ -83,3 +83,50 @@ CV <- function(data)
   }
 }
 
+#' Moment of order
+#' @description Computes the moment of order with respect to a point c
+#' if c = 0 then we have an ordinary moment of order and if c = mean, then we have a central moment of order
+#' @param data dataset
+#' @param r power of/order something
+#' @param c point in data
+#' @return moment of order
+#' @export
+m_r <- function(data,r,c)
+{
+  sum <- 0
+  n <- length(data)
+  for(i in 1:n)
+  {
+    sum <- sum + (data[i]-c)^r
+  }
+  val <- sum/n
+  return(val)
+}
+
+#' Fisher's skewness coefficient
+#' @description
+#' calculates fisher's skewness coefficient
+#' @param data dataset
+#' @return g1 fisher's skewness coefficient
+#' @export
+g1 <- function(data)
+{
+  m <- mean(data)
+  mu3 <-m_r(data,3,m)
+  val <- mu3/(std_dev(data)^3)
+  return(val)
+}
+
+#'Fisher's Kurtosis coefficient
+#' @description
+#' Finds the kurtosis of a dataset
+#' @param data dataset
+#' @return g2
+#' @export
+g2 <- function(data)
+{
+  m <- mean(data)
+  mu4 <- m_r(data,4,m)
+  val <- mu4/(std_dev(data)^4) -3
+  return(val)
+}
