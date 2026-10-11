@@ -9,6 +9,6 @@
 
 variance <- function(data)
 {
-  val <- mean(data^2) - length(data) * (mean(data)^2)
+  val <- mean(data^2) - (mean(data)^2)
   return(val)
 } 
