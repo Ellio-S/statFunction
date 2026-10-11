@@ -1,0 +1,14 @@
+#Chapter 1
+
+#Variance
+
+#Notation: V, \sigma^2 - population variance, s_n^2 - sample variance
+#n is the sample size
+#Takes data set as parameter
+#Returns the variance
+
+variance <- function(data)
+{
+  val <- mean(data^2) - length(data) * (mean(data)^2)
+  return(val)
+} 
