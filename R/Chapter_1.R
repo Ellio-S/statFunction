@@ -1,5 +1,41 @@
 #Chapter 1
 
+#' Mean deviation
+#' @description Mean deviation with respect to a parameter p
+#' @param data dataset
+#' @param p a parameter of central tendency
+#' @return The mean deviation
+#' @export
+MD <- function(data,p)
+{
+  sum <- 0
+  n <- length(data)
+  for(i in 1:n)
+  {
+    sum <- sum + abs(data[i]-p)
+  }
+  val <- sum/n
+  return(val)
+}
+
+#'Mean Square Error - parameter
+#' @description Calculates the normal mean square error with respect to a parameter p 
+#' @param data dataset
+#' @param p parameter usually of central tendency
+#' @return Mean Square Error - MSE
+#' @export
+MSE_p <- function(data,p)
+{
+  sum <- 0
+  n <- length(data)
+  for(i in 1:n)
+  {
+    sum <- sum + (data[i]-p)^2
+  }
+  val <- sum/n
+  return(val)
+}
+
 
 #' Standard deviation
 #' @description 
