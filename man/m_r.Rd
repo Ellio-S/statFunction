@@ -2,21 +2,21 @@
 % Please edit documentation in R/Chapter_1.R
 \name{m_r}
 \alias{m_r}
-\title{Moment of order}
+\title{Moment of order 1 dimension}
 \usage{
-m_r(data, r, c)
+m_r(data, r, c = 0)
 }
 \arguments{
 \item{data}{dataset}
 
 \item{r}{power of/order something}
 
-\item{c}{point in data}
+\item{c}{point in data (default c=0)}
 }
 \value{
 moment of order
 }
 \description{
 Computes the moment of order with respect to a point c
-if c = 0 then we have an ordinary moment of order and if c = mean, then we have a central moment of order
+if c = 0 or c is not given then we have an ordinary moment of order and if c = mean, then we have a central moment of order
 }

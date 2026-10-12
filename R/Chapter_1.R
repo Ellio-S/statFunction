@@ -83,15 +83,15 @@ CV <- function(data)
   }
 }
 
-#' Moment of order
+#' Moment of order 1 dimension
 #' @description Computes the moment of order with respect to a point c
-#' if c = 0 then we have an ordinary moment of order and if c = mean, then we have a central moment of order
+#' if c = 0 or c is not given then we have an ordinary moment of order and if c = mean, then we have a central moment of order
 #' @param data dataset
 #' @param r power of/order something
-#' @param c point in data
+#' @param c point in data (default c=0)
 #' @return moment of order
 #' @export
-m_r <- function(data,r,c)
+m_r <- function(data,r,c=0)
 {
   sum <- 0
   n <- length(data)
