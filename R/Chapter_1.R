@@ -1,5 +1,19 @@
 #Chapter 1
 
+#' Mode - stolen
+#' @description
+#' Mode function I stole from: https://raw.githubusercontent.com/hlobatoburgos/R_statistics/refs/heads/main/formulas.R
+#' @param x numeric datavector
+#' @return The mode of x
+#' @export
+my_mode <- function(x) {
+  f <- table(x)
+  m <- as.numeric(names(f)[f == max(f)])
+  if (length(m) == length(f)) return(NULL)
+  m
+}
+
+
 #' Mean deviation
 #' @description Mean deviation with respect to a parameter p
 #' @param data dataset
