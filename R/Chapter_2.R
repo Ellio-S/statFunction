@@ -51,3 +51,34 @@ MSE_r <- function(y, y_est=NULL)
   val <- mean(err^2)
   return(val)
 }
+
+#'Covariance
+#' @description
+#' Computes the covarinace of X and Y for simple tables and joint distribution of relative freqcuencies
+#' @param X classmarks of X
+#' @param Y classmarks of Y
+#' @param data given as a vector or a matrix depending on dimension parameter, all data is given as relative frequencies
+#' @param dimension is the dimension of the data 1 for data vector and 2 for data matrix, default (dimension=2)
+#' @return The covariance of X and Y
+#' @export
+Cov <- function(X,Y,data,dimension=2)
+{
+  val <- 0
+  if(dimension == 2)
+  {
+    mx <- m_rs(X,Y,data,1,0)
+    my <- m_rs(X,Y,data,0,1)
+    val <- m_rs(X,Y,data,1,1,mx,my)
+  }
+  else if(dimension == 1)
+  {
+    n <- length(data)
+    mx <- mean(X)
+    my <- mean(Y)
+    for(i in 1:n)
+    {
+      val <- val + (X[i]-mx)*(Y[i]-my)*data[i]
+    }
+  }
+  return(val)
+}
