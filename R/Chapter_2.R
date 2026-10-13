@@ -82,12 +82,35 @@ MSE_r <- function(y, y_est=NULL)
   return(val)
 }
 
-#' Coefficient of determination -R^2
+#' Coefficient of determination - R^2
 #' @description
-#' Calculates R^2, not to be cofused with r - the linear correlation coefficient r
-#' 
-#' 
-#' 
-#' 
-#' 
-#' 
+#' Calculates R^2, not to be confused with r - the linear correlation coefficient r
+#' @param y observed dataset
+#' @param y_est estimated value of the observed dataset
+#' @return numerical R^2 coefficient of determination
+#' @export
+R2 <- function(y,y_est)
+{
+  mse <- MSE_r(y,y_est)
+  v <- variance(y)
+  val <- 1 - mse/v
+  return(val)
+}
+
+#' Linear correlation coefficient - r
+#' @description
+#' Calculates r for the bivariate variable (X,Y)
+#' @param X independent dataset
+#' @param Y dependent dataset
+#' @param data data given as a vector or a matrix depending on dimension parameter, all data is given as relative frequencies
+#' @param dimension is the dimension of the data 1 for data vector and 2 for data matrix, default (dimension=2)
+#' @return r numeric value of linear correlation coefficient
+#' @export
+r <- function(X,Y,data,dimension=2)
+{
+  sx <- std_dev(X)
+  sy <- std_dev(Y)
+  c <- Cov(X,Y,data,dimension)
+  val <- c/(sx*sy)
+  return(val)
+}
