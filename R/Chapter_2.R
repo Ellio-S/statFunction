@@ -1,39 +1,34 @@
 #Chapter 2
 
 
-#' Raw vector
+#' Raw vectors
 #' @description
 #' Use when working with joint distribution tables 
-#' where the X and Y vector components of the bivariate varible 
+#' where the X and Y vector components of the bivariate variable 
 #' have different lengths to obtain a raw vector of one of the components
-#' @param x X or Y component of bivariate varible (X,Y)
+#' @param x X component of bivariate variable (X,Y)
+#' @param y Y component of bivariate variable (X,Y)
 #' @param freq_mat absolute frequency matrix of (X,Y)
-#' @param byrow boolean by default TRUE, set to true for the X component and set to false for the y component
-#' @return vector of one of the components of (X,Y)
+#' @return row matrix of the raw vectors x and y
 #' @export
-raw_vector <- function(x,freq_mat,byrow=TRUE)
+raw_vectors <- function(x,y,freq_mat)
 {
-  res <- c()
-  if(byrow)
-    for(i in 1: nrow(freq_mat))
-    {
-      for(j in 1:ncol(freq_mat))
-      {
-        k <- rep(x[i],times=freq_mat[i,j])
-        res <- append(res,k)
-      }
-    }
-  else
+  x_raw <- c()
+  y_raw <- c()
+  for(i in 1:nrow(freq_mat))
   {
     for(j in 1:ncol(freq_mat))
     {
-      for(i in 1:nrow(freq_mat))
-      {
-        k <- rep(x[j],times=freq_mat[i,j])
-        res <- append(res,k)
-      }
+      t <- freq_mat[i,j]
+      a <- rep(x[i],times=t)
+      b <- rep(y[j],times=t)
+      
+      x_raw <- append(x_raw,a)
+      y_raw <- append(y_raw,b)
     }
   }
+  z <- append(x_raw,y_raw)
+  res <- matrix(z,nrow=2,byrow=TRUE)
   return(res)
 }
 
