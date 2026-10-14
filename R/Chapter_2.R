@@ -32,6 +32,38 @@ raw_vectors <- function(x,y,freq_mat)
   return(res)
 }
 
+#'Independence of X and Y
+#' @description
+#' Function that tests whether X and Y are independent
+#' @param X independent variable
+#' @param Y dependent variable
+#' @param freq_mat relative frequency matrix of bivariate variable (X,Y)
+#' @return Boolean TRUE or FALSE
+#' @export
+isIndependent <- function(freq_mat)
+{
+  bool <- TRUE
+  n <- nrow(freq_mat)
+  k <- ncol(freq_mat)
+  i <- 1
+  while(i <= n && bool)
+  {
+    j <- 1
+    while(j <= k && bool)
+    {
+      fi <- sum(freq_mat[i,])
+      fj <- sum(freq_mat[,j])
+      if(freq_mat[i,j] != fi*fj)
+      {
+        bool <- FALSE
+      }
+      j <- j+1
+    }
+    i <- i+1
+  }
+  return(bool)
+}
+
 #' Moment of order 2 dimensions
 #' @description
 #' computes the moment of order with respect to a point (a,b)
