@@ -1,5 +1,42 @@
 #Chapter 2
 
+
+#' Raw vector
+#' @description
+#' Use when working with joint distribution tables 
+#' where the X and Y vector components of the bivariate varible 
+#' have different lengths to obtain a raw vector of one of the components
+#' @param x X or Y component of bivariate varible (X,Y)
+#' @param freq_mat absolute frequency matrix of (X,Y)
+#' @param byrow boolean by default TRUE, set to true for the X component and set to false for the y component
+#' @return vector of one of the components of (X,Y)
+#' @export
+raw_vector <- function(x,freq_mat,byrow=TRUE)
+{
+  res <- c()
+  if(byrow)
+    for(i in 1: nrow(freq_mat))
+    {
+      for(j in 1:ncol(freq_mat))
+      {
+        k <- rep(x[i],times=freq_mat[i,j])
+        res <- append(res,k)
+      }
+    }
+  else
+  {
+    for(j in 1:ncol(freq_mat))
+    {
+      for(i in 1:nrow(freq_mat))
+      {
+        k <- rep(x[j],times=freq_mat[i,j])
+        res <- append(res,k)
+      }
+    }
+  }
+  return(res)
+}
+
 #' Moment of order 2 dimensions
 #' @description
 #' computes the moment of order with respect to a point (a,b)
