@@ -9,7 +9,7 @@ R2(y, y_est)
 \arguments{
 \item{y}{observed dataset}
 
-\item{y_est}{estimated value of the observed dataset}
+\item{y_est}{estimated values of the observed dataset}
 }
 \value{
 numerical R^2 coefficient of determination

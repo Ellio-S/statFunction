@@ -86,7 +86,7 @@ MSE_r <- function(y, y_est=NULL)
 #' @description
 #' Calculates R^2, not to be confused with r - the linear correlation coefficient r
 #' @param y observed dataset
-#' @param y_est estimated value of the observed dataset
+#' @param y_est estimated values of the observed dataset
 #' @return numerical R^2 coefficient of determination
 #' @export
 R2 <- function(y,y_est)
